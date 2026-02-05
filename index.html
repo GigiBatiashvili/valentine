@@ -1,180 +1,142 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
-  <meta charset="UTF-8">
-  <title>💘 მარიამ 💘</title>
+<meta charset="UTF-8">
+<title>💘 მარიამ 💘</title>
+<style>
+  /* სხეულის ფონი და გრადიენტი */
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fad0c4, #ffecd2);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff5f9e, #ffc3a0);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Segoe UI", sans-serif;
-      overflow: hidden;
-    }
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
 
-    .card {
-      background: rgba(255, 255, 255, 0.22);
-      padding: 40px 50px;
-      border-radius: 25px;
-      text-align: center;
-      color: white;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-      animation: fadeIn 1.8s ease;
-      z-index: 2;
-    }
+  .card {
+    background: rgba(255,255,255,0.15);
+    padding: 50px 60px;
+    border-radius: 30px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    animation: fadeIn 2s ease;
+    z-index: 2;
+  }
 
-    h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
+  h1 { font-size: 42px; margin-bottom: 15px; }
+  p { font-size: 24px; margin-bottom: 30px; }
 
-    p {
-      font-size: 22px;
-      margin-bottom: 30px;
-    }
+  .buttons { display: flex; justify-content: center; gap: 25px; }
+  button {
+    padding: 18px 40px;
+    font-size: 22px;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: 0.25s;
+  }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
+  #yes {
+    background: #ff3366;
+    color: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+  #yes:hover { transform: scale(1.15); }
 
-    button {
-      padding: 15px 35px;
-      font-size: 20px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+  #no {
+    background: white;
+    color: #ff3366;
+    position: relative;
+  }
 
-    #yes {
-      background: #ff3366;
-      color: white;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
+  .message {
+    margin-top: 25px;
+    font-size: 26px;
+    display: none;
+    animation: fadeIn 1s ease;
+  }
 
-    #yes:hover {
-      transform: scale(1.1);
-    }
+  .heart {
+    position: fixed;
+    bottom: -10px;
+    color: white;
+    animation: float 6s linear infinite;
+    opacity: 0.85;
+    z-index: 1;
+  }
 
-    #no {
-      background: white;
-      color: #ff3366;
-      position: relative;
-    }
+  @keyframes float {
+    from { transform: translateY(0) scale(0.6); opacity: 0; }
+    to { transform: translateY(-110vh) scale(1.3); opacity: 1; }
+  }
 
-    .message {
-      margin-top: 25px;
-      font-size: 24px;
-      display: none;
-      animation: fadeIn 1s ease;
-    }
-
-    .heart {
-      position: fixed;
-      bottom: -10px;
-      color: white;
-      animation: float 6s linear infinite;
-      opacity: 0.8;
-      z-index: 1;
-    }
-
-    iframe {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      width: 280px;
-      height: 158px;
-      border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-      z-index: 3;
-    }
-
-    @keyframes float {
-      from {
-        transform: translateY(0) scale(0.6);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(-110vh) scale(1.2);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.85);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  </style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>💖 მარიამ 💖</h1>
-    <p>იქნები ჩემი ვალენტინი? 💌</p>
+<div class="card">
+  <h1>💖 მარიამ 💖</h1>
+  <p>ჩემო პრინცესა, იქნები ჩემი ვალენტინი? 💌</p>
 
-    <div class="buttons">
-      <button id="yes">კი 😍</button>
-      <button id="no">არა 🙈</button>
-    </div>
-
-    <div class="message" id="message">
-      💘 მადლობა მარიამ…<br>
-      შენ ხარ ჩემი ყველაზე ლამაზი არჩევანი ❤️
-    </div>
+  <div class="buttons">
+    <button id="yes">კი 😍</button>
+    <button id="no">არა 🙈</button>
   </div>
 
-  <!-- 🎵 სიმღერა -->
-  <iframe
-    src="https://www.youtube.com/embed/9n1X8fF3QnY?autoplay=1&mute=1"
-    title="გიორგი ტიგინაშვილი - ცოდვისფერი თვალები"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
+  <div class="message" id="message">
+    💘 ჩემო გულო, მადლობა მარიამ…<br>
+    შენი ღიმილი ჩემი ცხოვრების სინათლეა ❤️
+  </div>
+</div>
 
-  <script>
-    const noBtn = document.getElementById("no");
-    const yesBtn = document.getElementById("yes");
-    const message = document.getElementById("message");
+<script>
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+  const message = document.getElementById("message");
 
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+  // "არა" ღილაკი გაიქცევა
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 250 - 125;
+    const y = Math.random() * 250 - 125;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
 
-    yesBtn.addEventListener("click", () => {
-      message.style.display = "block";
-      createHearts();
-    });
+  // "კი" ღილაკი აჩვენებს მესიჯს და გულებს
+  yesBtn.addEventListener("click", () => {
+    message.style.display = "block";
+    createHearts();
+  });
 
-    function createHearts() {
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 6000);
-      }, 250);
-    }
-  </script>
+  // გული მოძრაობა
+  function createHearts() {
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 250);
+  }
+</script>
 
 </body>
 </html>
-
