@@ -2,63 +2,72 @@
 <html lang="ka">
 <head>
 <meta charset="UTF-8">
-<title>💘 მარიამ 💘</title>
+<title>💞 მარიამ, ჩემო სიყვარული</title>
 <style>
-  /* სხეულის ფონი და გრადიენტი */
   body {
     margin: 0;
-    height: 100vh;
+    padding: 0;
     font-family: "Segoe UI", sans-serif;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fad0c4, #ffecd2);
+    height: 100vh;
+    background: linear-gradient(120deg, #ffeef8, #ffdde1, #e0f7fa, #fff9e6);
     background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    animation: bgMove 20s ease infinite;
   }
 
-  @keyframes gradientBG {
+  @keyframes bgMove {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
   }
 
-  .card {
-    background: rgba(255,255,255,0.15);
-    padding: 50px 60px;
-    border-radius: 30px;
-    text-align: center;
-    color: white;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-    animation: fadeIn 2s ease;
-    z-index: 2;
-  }
-
-  h1 { font-size: 42px; margin-bottom: 15px; }
-  p { font-size: 24px; margin-bottom: 30px; }
-
-  .buttons { display: flex; justify-content: center; gap: 25px; }
-  button {
-    padding: 18px 40px;
-    font-size: 22px;
-    border: none;
+  .box {
+    background: rgba(255,255,255,0.2);
+    padding: 60px 70px;
     border-radius: 35px;
+    backdrop-filter: blur(15px);
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    animation: fadeIn 2s ease-out;
+  }
+
+  h1 {
+    font-size: 44px;
+    color: #ff6584;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 24px;
+    color: #444;
+    margin-bottom: 35px;
+  }
+
+  button {
+    font-size: 22px;
+    padding: 18px 38px;
+    border: none;
+    border-radius: 30px;
     cursor: pointer;
-    transition: 0.25s;
+    transition: 0.3s;
+    margin: 0 12px;
   }
 
-  #yes {
-    background: #ff3366;
+  #agree {
+    background: #ff85a1;
     color: white;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   }
-  #yes:hover { transform: scale(1.15); }
+  #agree:hover {
+    transform: scale(1.15);
+  }
 
-  #no {
+  #decline {
     background: white;
-    color: #ff3366;
+    color: #ff85a1;
     position: relative;
   }
 
@@ -66,75 +75,67 @@
     margin-top: 25px;
     font-size: 26px;
     display: none;
-    animation: fadeIn 1s ease;
+    color: #cc0044;
   }
 
-  .heart {
-    position: fixed;
-    bottom: -10px;
-    color: white;
-    animation: float 6s linear infinite;
-    opacity: 0.85;
-    z-index: 1;
+  .icon {
+    font-size: 24px;
+    animation: floatUp 8s ease infinite;
+    position: absolute;
+    bottom: -20px;
   }
 
-  @keyframes float {
-    from { transform: translateY(0) scale(0.6); opacity: 0; }
-    to { transform: translateY(-110vh) scale(1.3); opacity: 1; }
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(0.7); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.85); }
-    to { opacity: 1; transform: scale(1); }
+    from {opacity: 0; transform: scale(0.85);}
+    to {opacity: 1; transform: scale(1);}
   }
 </style>
 </head>
 <body>
 
-<div class="card">
-  <h1>💖 მარიამ 💖</h1>
-  <p>ჩემო პრინცესა, იქნები ჩემი ვალენტინი? 💌</p>
+<div class="box">
+  <h1>💖 მარიამ, ჩემო სიყვარული 💖</h1>
+  <p>ჩემო პრინცესა, იქნები ჩემი მუზა და ჩემი ვალენტინი? 💌</p>
 
-  <div class="buttons">
-    <button id="yes">კი 😍</button>
-    <button id="no">არა 🙈</button>
-  </div>
+  <button id="agree">კი 😍</button>
+  <button id="decline">არა 🙈</button>
 
   <div class="message" id="message">
-    💘 ჩემო გულო, მიყვარხარ ძალიან…<br>
-    ჩემო პრინცესა ❤️
+    💘 შენ ჩემი გულისთვის ხარ შექმნილი… ჩემი ერთადერთი! ❤️
   </div>
 </div>
 
 <script>
-  const noBtn = document.getElementById("no");
-  const yesBtn = document.getElementById("yes");
-  const message = document.getElementById("message");
+  const declineBtn = document.getElementById("decline");
+  const agreeBtn = document.getElementById("agree");
+  const msg = document.getElementById("message");
 
-  // "არა" ღილაკი გაიქცევა
-  noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * 250 - 125;
-    const y = Math.random() * 250 - 125;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  declineBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    declineBtn.style.transform = `translate(${x}px, ${y}px)`;
   });
 
-  // "კი" ღილაკი აჩვენებს მესიჯს და გულებს
-  yesBtn.addEventListener("click", () => {
-    message.style.display = "block";
-    createHearts();
-  });
+  agreeBtn.onclick = () => {
+    msg.style.display = "block";
+    launchHearts();
+  };
 
-  // გული მოძრაობა
-  function createHearts() {
+  function launchHearts() {
     setInterval(() => {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 250);
+      const icon = document.createElement("div");
+      icon.classList.add("icon");
+      icon.style.left = Math.random()*100 + "vw";
+      icon.innerHTML = ["❤️","✨","💗"][Math.floor(Math.random()*3)];
+      document.body.appendChild(icon);
+      setTimeout(() => icon.remove(), 6000);
+    }, 300);
   }
 </script>
 
